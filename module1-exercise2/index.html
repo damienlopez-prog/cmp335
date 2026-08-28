@@ -26,7 +26,7 @@
         <div class="column entry1">
             <h2>Entry 1 - A link (hyperlink)</h2>
 
-            <a href="https://www.w3schools.com/" target="_blank">
+            <a href="https://www.w3schools.com" target="_blank">
                 Visit W3Schools!
             </a>
         </div>
@@ -34,14 +34,14 @@
         <div class="column entry2">
             <h2>Entry 2 - an image</h2>
 
-            <img src="images/image.jpg" alt="Example image">
+            <img src="https://www.w3schools.com/html/img_girl.jpg" alt="Girl in a jacket" width="250">
         </div>
 
         <div class="column entry3">
             <h2>Entry 3 - a video</h2>
 
-            <video controls>
-                <source src="images/video.mp4" type="video/mp4">
+            <video width="100%" controls>
+                <source src="https://www.pexels.com/download/video/31755954/" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -53,36 +53,29 @@
 
             <button onclick="getLocation()">Try It</button>
 
-            <p id="demo">
-                Latitude: <br>
-                Longitude:
-            </p>
+            <p id="demo"></p>
         </div>
 
     </div>
 
     <script>
-
-        var x = document.getElementById("demo");
-
         function getLocation() {
+            const loc = document.getElementById("demo");
 
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        loc.innerHTML = "Latitude: " + position.coords.latitude +
+                            "<br>Longitude: " + position.coords.longitude;
+                    },
+                    () => {
+                        loc.innerHTML = "Location access denied.";
+                    }
+                );
             } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
+                loc.innerHTML = "Geolocation not supported.";
             }
-
         }
-
-        function showPosition(position) {
-
-            x.innerHTML =
-                "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-
-        }
-
     </script>
 
 </body>
