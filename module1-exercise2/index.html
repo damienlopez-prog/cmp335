@@ -2,19 +2,89 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width-device-wideth, initial-scale-1.0">
-<title>Document</title>
-
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Four Entry Layout</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<p class="t1">Responsive Four Entry Layout Using a Flexbox</p>
-<p class="t2">Resize the browser window to see the responsive effect.</p>
-<p class="t3">On screens that are 992px wide or less, the columns will resize from four columns to two columns.<br>
-   On screens that are 600px wide or less, the columns will stack on top of each other instead of next to each other.
-</p>
+
+    <p class="t1">Responsive Four Entry Layout Using a Flexbox</p>
+
+    <p class="t2">
+        Resize the browser window to see the responsive effect.
+    </p>
+
+    <p class="t3">
+        On screens that are 992px wide or less, the columns will resize from four columns to two columns.<br>
+        On screens that are 600px wide or less, the columns will stack on top of each other instead of next to each other.
+    </p>
+
+    <div class="row">
+
+        <div class="column entry1">
+            <h2>Entry 1 - A link (hyperlink)</h2>
+
+            <a href="https://www.w3schools.com/" target="_blank">
+                Visit W3Schools!
+            </a>
+        </div>
+
+        <div class="column entry2">
+            <h2>Entry 2 - an image</h2>
+
+            <img src="images/image.jpg" alt="Example image">
+        </div>
+
+        <div class="column entry3">
+            <h2>Entry 3 - a video</h2>
+
+            <video controls>
+                <source src="images/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="column entry4">
+            <h2>Entry 4 - use of the Geolocation API</h2>
+
+            <p>Click the button to get your coordinates.</p>
+
+            <button onclick="getLocation()">Try It</button>
+
+            <p id="demo">
+                Latitude: <br>
+                Longitude:
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+
+        }
+
+        function showPosition(position) {
+
+            x.innerHTML =
+                "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+
+        }
+
+    </script>
 
 </body>
+
 </html>
