@@ -104,12 +104,12 @@ body {
 
 @media (max-width: 600px) {
   .flex-container {
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
   }
 
   .cell {
-    flex-basis: 100%;
-    width: 100%;
+    flex: 1 1 0;
+    width: auto;
   }
 }
