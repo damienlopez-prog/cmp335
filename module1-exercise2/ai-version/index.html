@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Assignment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Responsive Four Entry Layout Using a Flexbox</h1>
+      <p>Resize the browser window to see the responsive effect.</p>
+      <p>
+        On screens that are 992px wide or less, the columns will resize from four columns to two columns.
+      </p>
+      <p>
+        On screens that are 600px wide or less, the columns will stack on top of each other instead of next to each other.
+      </p>
+    </header>
+
+    <main class="flex-container" aria-label="Responsive flexbox layout">
+      <section class="cell link-cell">
+        <h2>Entry 1 - A link (hyperlink)</h2>
+        <a href="https://www.w3schools.com" target="_blank" rel="noreferrer">Visit W3Schools!</a>
+      </section>
+
+      <section class="cell image-cell">
+        <h2>Entry 2 - an image</h2>
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+          alt="Mountain lake surrounded by pine trees at sunrise"
+        />
+      </section>
+
+      <section class="cell video-cell">
+        <h2>Entry 3 - a video</h2>
+        <video controls preload="metadata">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+      <section class="cell geo-cell">
+        <h2>Entry 4 - use of the Geolocation API</h2>
+        <p>Click the button to get your coordinates.</p>
+        <button id="geoButton" type="button">Try It</button>
+        <div id="geoOutput" class="geo-output" aria-live="polite">Latitude and longitude will appear here.</div>
+      </section>
+    </main>
+
+    <script>
+      const geoButton = document.getElementById('geoButton');
+      const geoOutput = document.getElementById('geoOutput');
+
+      geoButton.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+          geoOutput.textContent = 'Geolocation is not supported by this browser.';
+          return;
+        }
+
+        geoOutput.textContent = 'Getting your location...';
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            geoOutput.textContent = `Latitude: ${latitude.toFixed(4)}, Longitude: ${longitude.toFixed(4)}`;
+          },
+          () => {
+            geoOutput.textContent = 'Unable to access your location.';
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
