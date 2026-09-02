@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Survey Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function validateForm(event) {
+      event.preventDefault();
+      const name = document.getElementById("petName").value;
+      if (!name) {
+        alert("Please fill out all required fields before submitting.");
+        return false;
+      }
+      alert("Survey received! Thanks for sharing about your pet, " + name + "!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Pet Survey Form</h1>
+    <p class="subtitle">Thank you for taking the time to share about your pets!</p>
+
+    <form onsubmit="return validateForm(event)">
+      
+      <!-- Text Field -->
+      <label for="petName">What is your pet’s name? (Type N/A if you don't have one) <span class="required">*</span></label>
+      <input type="text" id="petName" name="petName" placeholder="Enter pet's name" required>
+
+      <!-- Dropdown -->
+      <label for="petType">What type of pet do you have (or want)? <span class="required">*</span></label>
+      <select id="petType" name="petType" required>
+        <option value="">Select type of pet</option>
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Bird</option>
+        <option>Fish</option>
+        <option>Reptile</option>
+        <option>Small Mammal</option>
+        <option>None/Other</option>
+      </select>
+
+      <!-- Radio Buttons -->
+      <p>How did you get your pet? <span class="required">*</span></p>
+      <label><input type="radio" name="acquired" value="Adoption" required> Adoption</label>
+      <label><input type="radio" name="acquired" value="Breeder"> Breeder</label>
+      <label><input type="radio" name="acquired" value="Pet store"> Pet store</label>
+      <label><input type="radio" name="acquired" value="Gift"> Gift</label>
+      <label><input type="radio" name="acquired" value="No pet"> I don’t have a pet</label>
+
+      <!-- Checkboxes -->
+      <p>What activities do you enjoy with your pet? (check all that apply)</p>
+      <label><input type="checkbox" name="activity" value="Walking"> Walking/Exercise</label>
+      <label><input type="checkbox" name="activity" value="Playing"> Playing fetch/toys</label>
+      <label><input type="checkbox" name="activity" value="Training"> Training/learning tricks</label>
+      <label><input type="checkbox" name="activity" value="Cuddling"> Cuddling/relaxing</label>
+      <label><input type="checkbox" name="activity" value="Traveling"> Traveling with them</label>
+      <label><input type="checkbox" name="activity" value="Grooming"> Grooming & care</label>
+
+      <!-- Textarea -->
+      <label for="comments">What do you love most about having a pet?</label>
+      <textarea id="comments" name="comments" placeholder="Share your thoughts..." required></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
