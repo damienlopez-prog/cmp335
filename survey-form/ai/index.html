@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Survey | Share Your Story</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="survey-card" aria-labelledby="survey-title">
+      <div class="intro">
+        <p class="eyebrow">PAWS AND PERSPECTIVES</p>
+        <h1 id="survey-title">Tell us about your pet.</h1>
+        <p class="subtitle">A few quick questions about the animals who make life better.</p>
+      </div>
+
+      <form id="petSurvey">
+        <div class="form-grid">
+          <div class="field full-width">
+            <label for="petName">What is your pet's name? <span aria-hidden="true">*</span></label>
+            <input type="text" id="petName" name="petName" placeholder="Enter a name or N/A" required>
+          </div>
+
+          <div class="field full-width">
+            <label for="petType">What type of pet do you have (or want)? <span aria-hidden="true">*</span></label>
+            <select id="petType" name="petType" required>
+              <option value="">Choose an option</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Bird</option>
+              <option>Fish</option>
+              <option>Reptile</option>
+              <option>Small Mammal</option>
+              <option>None/Other</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>How did you get your pet? <span aria-hidden="true">*</span></legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="acquired" value="Adoption" required><span>Adoption</span></label>
+            <label class="choice"><input type="radio" name="acquired" value="Breeder"><span>Breeder</span></label>
+            <label class="choice"><input type="radio" name="acquired" value="Pet store"><span>Pet store</span></label>
+            <label class="choice"><input type="radio" name="acquired" value="Gift"><span>Gift</span></label>
+            <label class="choice"><input type="radio" name="acquired" value="No pet"><span>I don't have a pet</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What activities do you enjoy together?</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="activity" value="Walking"><span>Walking or exercise</span></label>
+            <label class="choice"><input type="checkbox" name="activity" value="Playing"><span>Playing with toys</span></label>
+            <label class="choice"><input type="checkbox" name="activity" value="Training"><span>Training tricks</span></label>
+            <label class="choice"><input type="checkbox" name="activity" value="Cuddling"><span>Cuddling and relaxing</span></label>
+            <label class="choice"><input type="checkbox" name="activity" value="Traveling"><span>Traveling together</span></label>
+            <label class="choice"><input type="checkbox" name="activity" value="Grooming"><span>Grooming and care</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="comments">What do you love most about having a pet?</label>
+          <textarea id="comments" name="comments" placeholder="Share your thoughts..." required></textarea>
+        </div>
+
+        <button type="submit">Send my response <span aria-hidden="true">&rarr;</span></button>
+        <p class="form-note"><span aria-hidden="true">*</span> Required fields</p>
+        <p id="successMessage" class="success-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('petSurvey');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('petName').value.trim();
+      successMessage.textContent = `Thanks for sharing about ${name}! Your response has been received.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
