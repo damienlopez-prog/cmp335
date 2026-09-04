@@ -1,72 +1,127 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
 }
 
-.container {
-  width: 60%;
-  margin: 30px auto;
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  padding: 1rem;
 }
 
-h1 {
-  text-align: center;
-  color: green;
+header h1 {
+  margin: 0;
 }
 
-.subtitle {
-  text-align: center;
-  color: #666;
-  margin-bottom: 20px;
-  font-style: italic;
+nav {
+  display: flex;
+  gap: 2rem;
 }
 
-label, p {
-  display: block;
-  margin: 10px 0 5px;
+nav a {
+  color: #fff;
+  text-decoration: none;
   font-weight: bold;
 }
 
-input[type="text"],
-select,
-textarea {
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.content-box {
+  flex: 1 1 calc(25% - 1.5rem);
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-box h2 a {
+  text-decoration: none;
+  color: #222;
+}
+
+.content-box h2 a:hover {
+  color: #0073e6;
+}
+
+.content-box img {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  max-width: 220px;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-textarea {
-  height: 100px;
-  resize: vertical;
+footer {
+  display: flex;
+  gap: 2rem;
+  background: #f0f0f0;
+  padding: 2rem;
+  text-align: center;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  margin-right: 8px;
+.contact,
+.map {
+  flex: 1;
 }
 
-button {
+.contact h2 {
+  margin-bottom: 0.5rem;
+}
+
+.contact p {
+  margin: 0.3rem 0;
+}
+
+.map iframe {
   width: 100%;
-  padding: 12px;
-  background: red;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
 }
 
-button:hover {
-  background: darkred;
+@media screen and (max-width: 900px) {
+  .content-box {
+    flex: 1 1 calc(50% - 1.5rem);
+  }
 }
 
-.required {
-  color: red;
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .content-box {
+    flex: 1 1 100%;
+  }
+
+  footer {
+    flex-direction: column;
+  }
 }
