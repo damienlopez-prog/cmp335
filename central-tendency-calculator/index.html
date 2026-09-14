@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Central Tendency Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <h1>Central Tendency Calculator</h1>
+
+        <label for="numbers">Enter numbers</label>
+        <textarea id="numbers" rows="5" placeholder="Example: 1, 2, 3, 4, 5"></textarea>
+
+        <div class="actions">
+          <button id="calculateBtn" type="button">Calculate</button>
+          <button id="clearBtn" class="secondary" type="button">Clear</button>
+        </div>
+
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <div class="results">
+          <div class="result-item">
+            <span>Mean</span>
+            <strong id="mean">-</strong>
+          </div>
+          <div class="result-item">
+            <span>Median</span>
+            <strong id="median">-</strong>
+          </div>
+          <div class="result-item">
+            <span>Mode</span>
+            <strong id="mode">-</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
