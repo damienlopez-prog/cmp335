@@ -50,14 +50,36 @@ label {
   font-weight: 700;
 }
 
-textarea {
+input[type='number'] {
   width: 100%;
-  resize: vertical;
-  min-height: 120px;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
   font-size: 1rem;
+}
+
+.number-entry {
+  display: flex;
+  gap: 12px;
+}
+
+.number-entry button {
+  flex-shrink: 0;
+}
+
+.numbers-label {
+  margin: 18px 0 8px;
+  font-weight: 700;
+}
+
+.numbers-list {
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+  color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 .actions {
@@ -132,6 +154,10 @@ button.secondary:hover {
   }
 
   .actions {
+    flex-direction: column;
+  }
+
+  .number-entry {
     flex-direction: column;
   }
 

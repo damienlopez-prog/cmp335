@@ -11,11 +11,16 @@
       <section class="panel">
         <h1>Central Tendency Calculator</h1>
 
-        <label for="numbers">Enter numbers</label>
-        <textarea id="numbers" rows="5" placeholder="Example: 1, 2, 3, 4, 5"></textarea>
+        <label for="numberInput">Enter a number</label>
+        <div class="number-entry">
+          <input id="numberInput" type="number" step="any" placeholder="Example: 5" />
+          <button id="addBtn" type="button">Add number</button>
+        </div>
+
+        <p class="numbers-label">Numbers entered</p>
+        <div id="numbersList" class="numbers-list" aria-live="polite">No numbers yet</div>
 
         <div class="actions">
-          <button id="calculateBtn" type="button">Calculate</button>
           <button id="clearBtn" class="secondary" type="button">Clear</button>
         </div>
 

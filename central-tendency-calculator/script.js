@@ -1,33 +1,16 @@
-const numbersInput = document.getElementById('numbers');
-const calculateBtn = document.getElementById('calculateBtn');
+const numberInput = document.getElementById('numberInput');
+const addBtn = document.getElementById('addBtn');
 const clearBtn = document.getElementById('clearBtn');
 const messageEl = document.getElementById('message');
+const numbersListEl = document.getElementById('numbersList');
 const meanEl = document.getElementById('mean');
 const medianEl = document.getElementById('median');
 const modeEl = document.getElementById('mode');
+const numbers = [];
 
 function setMessage(text, isError = false) {
   messageEl.textContent = text;
   messageEl.classList.toggle('error', isError);
-}
-
-function parseNumbers(value) {
-  const items = value
-    .split(/[\s,]+/)
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-  if (!items.length) {
-    return [];
-  }
-
-  const numbers = items.map((item) => Number(item));
-
-  if (numbers.some((num) => Number.isNaN(num))) {
-    return null;
-  }
-
-  return numbers;
 }
 
 function formatValue(value) {
@@ -85,41 +68,55 @@ function updateResults(numbers) {
   modeEl.textContent = modes.length ? modes.map(formatValue).join(', ') : 'No mode';
 }
 
-function handleCalculate() {
-  const inputText = numbersInput.value.trim();
+function renderNumbers() {
+  if (!numbers.length) {
+    numbersListEl.textContent = 'No numbers yet';
+    return;
+  }
+
+  numbersListEl.textContent = numbers.map(formatValue).join(', ');
+}
+
+function handleAdd() {
+  const inputText = numberInput.value.trim();
 
   if (!inputText) {
     setMessage('Please enter at least one number.', true);
-    updateResults([]);
     return;
   }
 
-  const numbers = parseNumbers(inputText);
+  const number = Number(inputText);
 
-  if (!numbers) {
+  if (Number.isNaN(number)) {
     setMessage('Please use valid numbers only.', true);
-    updateResults([]);
     return;
   }
 
+  numbers.push(number);
+  renderNumbers();
   setMessage('');
   updateResults(numbers);
+  numberInput.value = '';
+  numberInput.focus();
 }
 
 function handleClear() {
-  numbersInput.value = '';
+  numbers.length = 0;
+  numberInput.value = '';
+  renderNumbers();
   setMessage('');
   updateResults([]);
-  numbersInput.focus();
+  numberInput.focus();
 }
 
-calculateBtn.addEventListener('click', handleCalculate);
+addBtn.addEventListener('click', handleAdd);
 clearBtn.addEventListener('click', handleClear);
 
-numbersInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
-    handleCalculate();
+numberInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    handleAdd();
   }
 });
 
+renderNumbers();
 updateResults([]);
